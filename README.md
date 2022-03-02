@@ -1,4 +1,4 @@
-Prerequisites:
+Prerequisites: not
 
 - .Net 6
 - node.js version 14+
