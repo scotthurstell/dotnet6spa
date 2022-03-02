@@ -3,7 +3,7 @@ Prerequisites:
 - .Net 6
 - node.js version 14+
 - npm version 6.14+
-- Angular version 12.2.2
+- Angular version 13.2.4
 
 Run
 
