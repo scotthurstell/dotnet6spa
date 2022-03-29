@@ -31,16 +31,13 @@ We are looking for the following in your fork:
 - a service class that uses Dapper to retrieve the temperatures from the database and unit test
 - the service being used in the weather forecast controller to retrieve the data
 - one angular component unit test using Jasmine and Karma
-
-For additional bonus points:
-
-- change the angular app to use angular material styling
-- create a component for temperature CRUD operations using reactive forms
-- add the required endpoints to the weather forecast controller
+- create an angular component for temperature CRUD operations using reactive forms
+- add the required REST endpoints to the weather forecast controller
 - add the required CRUD methods to the data service
 
 For even more bonus points:
 
-- secure the app with the identity provider of your choice (Google, etc) using OAuth and the angular-auth-oidc-client version 11+, if possible implementing PKCE flow
+- change the angular app to use angular material styling
+- secure the app with the identity provider of your choice (Google, etc) using OAuth and the **angular-auth-oidc-client** version 11+, if possible implementing PKCE flow
 
 Finally, submit a pull request for your fork as well as your contact information!
