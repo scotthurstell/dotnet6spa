@@ -1,8 +1,13 @@
+using Data.Repositories;
+using Data.Repositories.Interfaces;
+using Data.SQLiteDatabase;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+DataInitializer.InitializeDatabase();
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IForecastRepository, ForecastRepository>();
 
 var app = builder.Build();
 

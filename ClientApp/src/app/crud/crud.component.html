@@ -1,0 +1,33 @@
+<h1 id="tableLabel">Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+
+<a class="btn btn-sm btn-success mb-2" [routerLink]="['/add-edit']">Add User</a>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Temp. (C)</th>
+      <th>Temp. (F)</th>
+      <th>Summary</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let forecast of forecasts">
+      <td>{{ forecast.date }}</td>
+      <td>{{ forecast.temperatureC }}</td>
+      <td>{{ forecast.temperatureF }}</td>
+      <td>{{ forecast.summary }}</td>
+      <td style="white-space: nowrap">
+        <a class="btn btn-sm btn-primary mr-1" routerLink="/add-edit/{{forecast.id}}">Edit</a>
+        <button (click)="deleteForecast(forecast.id)" class="btn btn-sm btn-danger">
+            <span>Delete</span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
