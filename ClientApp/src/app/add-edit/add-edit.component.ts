@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AddEditComponent implements OnInit {
     form!: FormGroup;
-    id!: string;
+    id!: number;
     isAddMode!: boolean;
     loading = false;
     submitted = false;
@@ -30,6 +30,7 @@ export class AddEditComponent implements OnInit {
 
         const formOptions: AbstractControlOptions = {};
         this.form = this.formBuilder.group({
+            id: [0],
             temperatureC: ['', Validators.required],
             summary: ['', Validators.required]
         }, formOptions);
@@ -50,23 +51,25 @@ export class AddEditComponent implements OnInit {
         this.loading = true;
         if (this.isAddMode) {
             this.createForecast(this.form.value);
-            this.router.navigate(['/crud'], { relativeTo: this.route });
         } else {
             this.updateForecast(this.form.value);
-            this.router.navigate(['/crud'], { relativeTo: this.route });
         }
     }
 
-    private updateForecast(forecast : WeatherForecast): Observable<any> {
+    private updateForecast(forecast : WeatherForecast) {
         const headers = { 'content-type': 'application/json'} ;
         const body = JSON.stringify(forecast);
-        return this.http.put(this.baseUrl + 'weatherforecast', body, {'headers': headers});
+        this.http.put(this.baseUrl + 'weatherforecast', body, {'headers': headers}).subscribe(response => {
+            this.router.navigate(['/crud'], { relativeTo: this.route });
+        });
     }
 
-    private createForecast(forecast : WeatherForecast): Observable<any> {
+    private createForecast(forecast : WeatherForecast) {
         const headers = { 'content-type': 'application/json'} ;
         const body = JSON.stringify(forecast);
-        return this.http.post(this.baseUrl + 'weatherforecast', body, {'headers': headers});
+        this.http.post(this.baseUrl + 'weatherforecast', body, {'headers': headers}).subscribe(response => {
+            this.router.navigate(['/crud'], { relativeTo: this.route });
+        });
     }
 }
 

@@ -9,7 +9,7 @@ export class CrudComponent {
   public forecasts: WeatherForecast[] = [];
   baseUrl: string = "";
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') url: string) {
+  constructor(private http: HttpClient, @Inject('BASE_URL') private url: string) {
     this.baseUrl = url;
     http.get<WeatherForecast[]>(url + 'weatherforecast').subscribe(result => {
       this.forecasts = result;
@@ -17,7 +17,11 @@ export class CrudComponent {
   }
 
   deleteForecast(id: number) {
-    return this.http.delete(this.baseUrl + 'weatherforecast/{' + id + '}');
+    return this.http.delete(this.baseUrl + 'weatherforecast/' + id).subscribe(response => {
+      this.http.get<WeatherForecast[]>(this.url + 'weatherforecast').subscribe(result => {
+        this.forecasts = result;
+      }, error => console.error(error));
+    });
   }
 }
 
