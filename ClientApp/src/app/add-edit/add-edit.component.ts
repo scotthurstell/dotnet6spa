@@ -31,9 +31,9 @@ export class AddEditComponent implements OnInit {
         const formOptions: AbstractControlOptions = {};
         this.form = this.formBuilder.group({
             id: [0],
-            date: [Date.now(), Validators.required],
-            temperatureC: ['', Validators.required],
-            summary: ['', Validators.required]
+            date: [new Date(), Validators.required],
+            temperatureC: [, Validators.required],
+            summary: [, Validators.required]
         }, formOptions);
 
         if (!this.isAddMode) {

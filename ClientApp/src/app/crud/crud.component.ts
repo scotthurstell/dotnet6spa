@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class CrudComponent {
   public forecasts: WeatherForecast[] = [];
   baseUrl: string = "";
+  //displayedColumns: string[] = ['date', 'temperatureC', 'temperatureF', 'summary'];
 
   constructor(private http: HttpClient, @Inject('BASE_URL') private url: string) {
     this.baseUrl = url;
