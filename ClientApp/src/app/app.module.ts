@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -32,8 +34,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatFormFieldModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
@@ -44,11 +48,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     ]),
     BrowserAnimationsModule
   ],
-  exports:[
+  providers: [    
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule  
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
